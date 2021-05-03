@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .accordian{
+            background-color: #eee;
+            color: #333;
+            cursor: pointer;
+            width: 100%;
+            padding: 9px;
+            margin-top: 2px;
+            border: none;
+            outline: none;
+            text-align: left;
+        }
+
+        .accordian:after{
+            content: '\002B';
+            color: rgb(134, 127, 127);
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active, .accordian:hover{
+            background-color: rgb(160, 158, 158);
+            transition: 0.4s ease-out;
+        }
+
+        .active:after{
+            content: "\2212";
+        }
+
+        .panel{
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-out;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Accordian with symbols</h2>
+    <p>In this example we have added a "plus" sign to each button. When the user clicks on the button, the "plus" sign is replaced with a "minus" sign.</p>
+    <button class="accordian">Section 1</button>
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla commodi neque eligendi, fuga laboriosam cum mollitia iusto repudiandae dolorum ea voluptatem explicabo nam alias dolorem ullam aperiam expedita et totam?</p>  
+    </div>
+
+    <button class="accordian">Section 2</button>
+    <div class="panel">
+       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab dolorum sunt ea officia, amet nihil blanditiis sint facilis atque ratione. Consectetur, deleniti repellat. Tenetur, ex quos deleniti laudantium ipsum sequi.</p> 
+    </div>
+
+    <button class="accordian">Section 3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, porro unde beatae nostrum expedita esse repudiandae consectetur optio aperiam est, molestiae aspernatur quaerat at alias numquam quo temporibus magnam tempora!</p>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName('accordian');
+        var i;
+
+        for(var i=0;i<acc.length;i++){
+            acc[i].addEventListener('click', function(){
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if(panel.style.maxHeight){
+                    panel.style.maxHeight = null;
+                }else{
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            })
+        }
+    </script>
+</body>
+</html>
